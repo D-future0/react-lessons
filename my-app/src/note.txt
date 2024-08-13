@@ -1,0 +1,26 @@
+*lesson note*
+
+React is a JavaScript library for building user interface. 
+React is develop by Facebook.
+
+*setting up your Dev Environment*
+
+ *Dev Environment for running React*
+ Node <download latest version>
+ Brower
+ Text editor
+ React developer tools
+
+ *NPM*
+ npm init - create package.json (list of Dependances).
+ npm install <package name> - install package locally and add to package.json.
+ npm install <package name> -g -install package globally (access anywhere) SUDO.
+ npm install <package name> -dev - use it only in development.
+ npm start - start Dev server
+
+ *Create React App*
+ create React app tools is created by Facebook
+
+ npx create-react-app <folder name> 
+
+
