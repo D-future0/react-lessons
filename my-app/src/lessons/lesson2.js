@@ -38,9 +38,12 @@ const Book = (props) => {
       <img src={image} alt="image"></img>
       <h3>{title}</h3>
       <p>{author}</p>
+      <button type="button" onClick={()=> console.log(title)}>refrence button</button>
+      <button type="button" onClick={()=>eventHandler(author)}>complex refrence button</button>
     </div>
   );
 };
+const eventHandler = (author)=> console.log(author)
 
 // variables
 {/*const img =

@@ -24,3 +24,14 @@ React is develop by Facebook.
  npx create-react-app <folder name> 
 
 
+**Tips**
+add closing tag to attribute that does not have closing tag in jsx i.e <img src="/path" alt="ait text"></img>
+to host project use npm build and paste the build file in your wed host
+
+*lessons*
+jsx
+import/export- rafce shortcut to create and export a component
+props
+onClick
+
+
