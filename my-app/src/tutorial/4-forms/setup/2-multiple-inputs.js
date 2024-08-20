@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 // JS
 // const input = document.getElementById('myText');
 // const inputValue = input.value
@@ -7,71 +7,81 @@ import React, { useState } from 'react';
 // dynamic object keys
 
 const ControlledInputs = () => {
-  // const [firstName, setFirstName] = useState('');
-  // const [email, setEmail] = useState('');
-  const [person, setPerson] = useState({ firstName: '', email: '', age: '' })
+  const [person, setPerson] = useState({username:``, email:``, phoneNumber:``});
   const [people, setPeople] = useState([]);
-  const handleChange = (event) => {
-    const eventName = event.target.name;
-    const eventValue = event.target.value;
-    setPerson({...person, [eventName] : eventValue})
-  }
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    if( person.firstName && person.email && person.age ){
-      const newPerson = {...person, id: new Date().getDate().toString};
-      setPeople([...people, newPerson])
+ const changeHandler = (e)=>{
+  const name = e.target.name
+    const value = e.target.value 
+    setPerson({ ...person, [name]:value })
+ }
+  const submitForm = (e) => {
+    const name = e.target.name
+    const value = e.target.value
+    e.preventDefault();
+    if (person.username && person.email && person.phoneNumber) {
+      setPeople((people) => {
+        return [...people, person];
+      });
+      setPerson({username:``, email:``, phoneNumber:``})
     }
-  }
-
-
+    // setPerson({username:``, email:``, phoneNumber:``});
+    // setEmail(``);
+  };
   return (
     <>
       <article>
-        <form className='form' onSubmit={handleSubmit}>
-          <div className='form-control'>
-            <label htmlFor='firstName'>Name : </label>
+        <form className="form">
+          <div className="form-control">
+            <label htmlFor="username">username : </label>
             <input
-              type='text'
-              id='firstName'
-              name='firstName'
-              value={person.firstName}
-              onChange={handleChange}
-            />
+              type="text"
+              name="username"
+              id="username"
+              value={person.username}
+              onChange={changeHandler}
+            ></input>
           </div>
-          <div className='form-control'>
-            <label htmlFor='email'>Email : </label>
+          <div className="form-control">
+            <label htmlFor="email">email : </label>
             <input
-              type='email'
-              id='email'
-              name='email'
+              type="text"
+              name="email"
+              id="email"
               value={person.email}
-              onChange={handleChange}
-            />
+              onChange={changeHandler}
+            ></input>
           </div>
-          <div className='form-control'>
-            <label htmlFor='email'>Age : </label>
+          <div className="form-control">
+            <label htmlFor="phoneNumber">phoneNumber : </label>
             <input
-              type='age'
-              id='age'
-              name='age'
-              value={person.age}
-              onChange={handleChange}
-            />
+              type="text"
+              name="phoneNumber"
+              id="phoneNumber"
+              value={person.phoneNumber}
+              onChange={changeHandler}
+            ></input>
           </div>
-          <button type='submit'>add person</button>
+          <button
+            className="btn"
+            onClick={(e) => {
+              submitForm(e);
+            }}
+          >
+            submit form
+          </button>
         </form>
-        {people.map((person) => {
-          const { id, firstName, email, age } = person;
-          return (
-            <div className='item' key={id}>
-              <h4>{firstName}</h4>
-              <p>{age}</p>
-              <p>{email}</p>
-            </div>
-          );
-        })}
       </article>
+      {people.map((person, index) => {
+        const { username, email, phoneNumber } = person;
+        console.log(person);
+        return (
+          <div className="item" key={index}>
+            <h3>{username}</h3>
+            <p>{phoneNumber}</p>
+            <p>{email}</p>
+          </div>
+        );
+      })}
     </>
   );
 };

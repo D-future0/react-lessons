@@ -33,5 +33,12 @@ jsx
 import/export- rafce shortcut to create and export a component
 props
 onClick
+React hooks - useState
+React hooks - useEffect
+conditional statement
+controlled input & multiple-input
+React hooks - useRef
+React hooks - useReducer
+props drilling
 
 

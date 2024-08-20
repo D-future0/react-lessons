@@ -2,20 +2,21 @@ import { click } from '@testing-library/user-event/dist/click';
 import React, { useState } from 'react';
 
 const UseStateObject = () => {
-  const [user, setUser] = useState({
-    name: `ugochukwu`,
-    age: 25,
-    slogan: `i love python`
+  const [person, setUser] = useState({
+    name:`collins`,
+    age: 55,
+    message: `random message`
   })
-  const clickHandler = () => {
-    return setUser({...user, slogan: `i love React`})
+  const { name, age, message } = person
+  const clickHandler = ()=>{
+    setUser({...person, message:`i love React`})
   }
-  return <>
-  <h3>{user.name}</h3>
-  <h3>{user.age}</h3>
-  <h3>{user.slogan}</h3>
-  <button type='button' className="btn" onClick={clickHandler}>change slogan</button>
-  </>;
+  return (<>
+    <h2>{name}</h2>
+    <h2>{age}</h2>
+    <h2>{message}</h2>
+    <button className='btn' onClick={clickHandler}>change message</button>
+  </>)
 };
 
 export default UseStateObject;

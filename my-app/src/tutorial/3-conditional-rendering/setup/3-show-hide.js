@@ -1,27 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const ShowHide = () => {
-  const [show, setShow] = useState(false)
-
-  return <>
-  <h2 style={{ margin: `5rem`}}>{show || <Comp />}</h2>
-  <button type='button' className='btn' onClick={()=> setShow(!show)}>show/hide</button>
-  </>;
-};
-const Comp = () => {
-  const [size, setSize] = useState(window.innerWidth)
-  useEffect(()=>{
-    window.addEventListener('resize', () => {
-      setSize(window.innerWidth);
-      return ()=>{
-        window.removeEventListener('resize', () => {
-          setSize(window.innerWidth);})
-      }
-    }, [])
-  })
-    return <>
-    window size:{size}
+  const [show, setShow] = useState(false);
+  return (
+    <>
+      {show && <Item />}
+      <button className="btn" onClick={() => setShow(!show)}>
+        show button
+      </button>
     </>
-}
-
+  );
+};
+const Item = () => {
+  const [size, setSize] = useState(window.innerWidth);
+  const resize = () => {
+    return setSize(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener(`resize`, resize);
+    return () => {
+      window.removeEventListener(`resize`, resize);
+    };
+  });
+  return (
+    <>
+      <h2>window size : {size}</h2>
+    </>
+  );
+};
 export default ShowHide;

@@ -2,22 +2,25 @@ import React from 'react';
 import { data } from '../../../data';
 
 const UseStateArray = () => {
-  const [people, setPeople] = React.useState(data);
-  const clickHandler = (id) => {
-    const newPeople = people.filter(person => person.id !== id)
-    return setPeople(newPeople)
-  };
+  const [names, setNames] = React.useState(data)
+  const clickHandler = ()=>{
+    setNames([])
+  }
+  const removeName = (id)=>{
+    const newNames = names.filter(names => names.id !== id);
+    setNames(newNames)
+  }
 
-  return <React.Fragment>
-    {people.map((people) => {
-      const {id, name} = people;
-      return <div key={id} className='item'>
-        <h3>{name}</h3>
-        <button type='button' onClick={() => clickHandler(id)}>remove</button>
-      </div>
+  return (<React.Fragment>
+    {names.map(names =>{
+      const { id, name } = names;
+      console.log(names)
+      return (<div className='item' key={id} ><h3>{name}</h3>
+      <button type='button' className='btn' onClick={()=> removeName(id)}>remove</button>
+      </div>)
     })}
-    <button type='button' className='btn' onClick={() => setPeople([])}>clear item</button>
-  </React.Fragment>;
+    <button type='button' className='btn' onClick={clickHandler}>clear all</button>
+  </React.Fragment>);
 };
 
 export default UseStateArray;
