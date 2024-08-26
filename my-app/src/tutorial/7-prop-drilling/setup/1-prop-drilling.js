@@ -6,15 +6,15 @@ import { data } from "../../../data";
 
 const PropDrilling = () => {
   const [people, setPeople] = useState(data);
-  
-const removePerson = (id)=>{
-  setPeople(()=>{
-    return people.filter(person => person.id !== id)
-  })
-}
+
+  const removePerson = (id) => {
+    setPeople(() => {
+      return people.filter((person) => person.id !== id);
+    });
+  };
   return (
     <>
-      <List people={people} removePerson={removePerson}/>
+      <List people={people} removePerson={removePerson} />
     </>
   );
 };
@@ -25,7 +25,11 @@ const List = ({ people, removePerson }) => {
       {people.map((person) => {
         return (
           <>
-            <SinglePerson key={person.id} {...person} removePerson={removePerson}/>
+            <SinglePerson
+              key={person.id}
+              {...person}
+              removePerson={removePerson}
+            />
           </>
         );
       })}
@@ -39,7 +43,14 @@ const SinglePerson = ({ name, id, removePerson }) => {
     <>
       <div className="item">
         <h4>{name}</h4>
-        <button type="button" onClick={()=>{removePerson(id)}}>remove</button>
+        <button
+          type="button"
+          onClick={() => {
+            removePerson(id);
+          }}
+        >
+          remove
+        </button>
       </div>
     </>
   );
