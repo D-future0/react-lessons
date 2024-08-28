@@ -40,5 +40,7 @@ controlled input & multiple-input
 React hooks - useRef
 React hooks - useReducer
 props drilling
+react-router
+useMemo
 
 
